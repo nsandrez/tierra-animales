@@ -47,7 +47,7 @@
                 </nav>
 
                 <div class="flex items-center">
-                    <a href="#" class="text-gray-600 hover:text-primary p-2 rounded-full">
+                    <a href="/acesso" class="text-gray-600 hover:text-primary p-2 rounded-full">
                         <span class="sr-only">Iniciar sesión</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -159,7 +159,7 @@
                         </p>
                     </div>
                     <div class="lg:pl-12">
-                        <img src="{{ asset('images/nosotros.jpg') }}" alt="Equipo veterinario"
+                        <img src="{{ asset('images/nosotros.png') }}" alt="Equipo veterinario"
                             class="rounded-lg object-cover w-full h-auto">
                     </div>
                 </div>
