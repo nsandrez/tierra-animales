@@ -103,7 +103,7 @@
             </header>
 
             <main class="flex-1 p-4 md:p-6">
-                @if (in_array(auth()->user()->rol == 'Administrador'))
+                @if (auth()->user()->rol == 'Administrador')
                     @yield('contenido-admin')
                 @elseif(auth()->user()->rol == 'Veterinario')
                     @yield('contenido-vet')
