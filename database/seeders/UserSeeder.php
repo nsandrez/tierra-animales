@@ -11,15 +11,6 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Super Usuario',
-            'email' => 'spusuario@tierraanimales.com',
-            'password' => Hash::make('123'),
-            'rol' => 'Super Usuario',
-            'phone' => '+569 12345678',
-            'status' => 'OPERATIVO',
-        ]);
-
-        User::create([
             'name' => 'Administrador',
             'email' => 'admin@tierraanimales.com',
             'password' => Hash::make('123'),

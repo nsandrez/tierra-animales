@@ -22,7 +22,6 @@
             </div>
             <form class="space-y-4" action="{{ route('password.update') }}" method="POST">
                 @csrf
-                <!-- Es importante pasar el token también -->
                 <input type="hidden" name="token" value="{{ request()->route('token') }}">
                 <div>
                     <label for="password" class="block text-sm font-medium text-gray-700">Nueva Contraseña</label>

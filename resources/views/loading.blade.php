@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5;url={{ route('processForgetPassword') }}">
+    <meta http-equiv="refresh" content="5;url={{ route('password.process_forget_password') }}">
     <title>Procesando...</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/spinner.css') }}">
