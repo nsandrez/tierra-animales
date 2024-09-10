@@ -35,10 +35,8 @@
                 </p>
             </div>
 
-            <!-- Formulario de inicio de sesión -->
             <form class="space-y-4" action="{{ route('login') }}" method="POST">
                 @csrf
-                <!-- Correo electrónico -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
                     <input id="email" name="email" type="email" autocomplete="email"
@@ -50,7 +48,6 @@
                     @enderror
                 </div>
 
-                <!-- Contraseña -->
                 <div>
                     <div class="flex items-center justify-between">
                         <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
