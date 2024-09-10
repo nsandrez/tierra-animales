@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\AuthServices;
+use App\Services\Auth\RoleService;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\ForgetPasswordRequest;
+use App\Services\Auth\AuthServices;
 use App\Http\Requests\ResetPasswordRequest;
+use App\Http\Requests\ForgetPasswordRequest;
 
 class AuthController extends Controller
 {
     protected $authService;
+    protected $roleService;
 
-    public function __construct(AuthServices $authService)
+    public function __construct(AuthServices $authService, RoleService $roleService)
     {
         $this->authService = $authService;
+        $this->roleService = $roleService;
     }
 
     public function login(LoginRequest $request)
@@ -22,14 +25,14 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if ($this->authService->login($credentials['email'], $credentials['password'])) {
-            return redirect()->route('inicio');
+            $user = auth()->user();
+            return $this->roleService->redirectBasedOnRole($user->rol);
         }
 
         return back()->withErrors([
             'email' => 'Las credenciales no coinciden.',
         ]);
     }
-
 
     public function logout()
     {
@@ -53,7 +56,7 @@ class AuthController extends Controller
     {
         $email = session('reset_email');
         if (!$email) {
-            return redirect()->route('forgetPasswordForm')->withErrors(['email' => 'Ocurrió un error inesperado.']);
+            return redirect()->route('password.forget_password_form')->withErrors(['email' => 'Ocurrió un error inesperado.']);
         }
 
         $response = $this->authService->sendResetPasswordEmail($email);
@@ -62,14 +65,14 @@ class AuthController extends Controller
             return view('auth.reset-success');
         }
 
-        return redirect()->route('forgetPasswordForm')->withErrors(['email' => $response['message']]);
+        return redirect()->route('password.forget_password_form')->withErrors(['email' => $response['message']]);
     }
 
     public function showResetForm($token)
     {
         $result = $this->authService->showResetForm($token);
         if (!$result['status']) {
-            return redirect()->route('forgetPasswordForm')->withErrors(['email' => $result['message']]);
+            return redirect()->route('password.forget_password_form')->withErrors(['email' => $result['message']]);
         }
         return view('auth.reset-password', ['token' => $token]);
     }
