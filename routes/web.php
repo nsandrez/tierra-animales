@@ -21,10 +21,20 @@ Route::get('/acceso', function () {
 Route::post('/acceso-usuario', [AuthController::class, 'login'])->name('login');
 Route::post('/cerrar-sesion', [AuthController::class, 'logout'])->name('logout');
 
-
 Route::get('/restablecer-clave', function () {
     return view('auth.forgot-password');
-});
+})->name('forgetPasswordForm');
+
+Route::get('/loading', function () {
+    return view('loading');
+})->name('loading');
+
+Route::post('/restablecer-clave/email', [AuthController::class, 'forgetPassword'])->name('password.email');
+Route::get('/proceso/olvidar/clave', [AuthController::class, 'processForgetPassword'])->name('processForgetPassword');
+
+Route::get('/clave/restablecer/{token}', [AuthController::class, 'showResetForm'])->name('password.reset');
+
+Route::post('/clave/actualizar', [AuthController::class, 'updatePassword'])->name('password.update');
 
 Route::get('/403', function () {
     return view('error.403');
@@ -37,7 +47,6 @@ Route::get('/404', function () {
 Route::get('/401', function () {
     return view('error.401');
 })->name('401');
-
 
 Route::middleware(['auth', 'checkStatus'])->group(function () {
     Route::get('/inicio', function () {

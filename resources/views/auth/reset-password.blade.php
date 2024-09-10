@@ -20,20 +20,32 @@
                     Restablecer contraseña
                 </h2>
             </div>
-            <form class="space-y-4" action="{{ route('password.email') }}" method="POST">
+            <form class="space-y-4" action="{{ route('password.update') }}" method="POST">
                 @csrf
+                <!-- Es importante pasar el token también -->
+                <input type="hidden" name="token" value="{{ request()->route('token') }}">
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
-                    <input id="email" name="email" type="email" autocomplete="email"
+                    <label for="password" class="block text-sm font-medium text-gray-700">Nueva Contraseña</label>
+                    <input id="password" name="password" type="password" required
                         class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
-                        placeholder="Ingresa tu correo electrónico">
-                    @error('email')
+                        placeholder="Ingresa tu nueva contraseña">
+                    @error('password')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div>
+                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirmar
+                        Contraseña</label>
+                    <input id="password_confirmation" name="password_confirmation" type="password" required
+                        class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
+                        placeholder="Confirma tu nueva contraseña">
+                    @error('password_confirmation')
                         <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
                 <button type="submit"
                     class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                    Continuar
+                    Modificar contraseña
                 </button>
             </form>
             <div class="mt-4 text-center">
