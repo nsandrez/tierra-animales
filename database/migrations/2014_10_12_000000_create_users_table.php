@@ -22,11 +22,18 @@ return new class extends Migration
             $table->string('status')->default('OPERATIVO');
             $table->string('rol')->nullable();
             $table->string('phone')->nullable();
+            $table->string('reset_token')->nullable();
+            $table->timestamp('token_expiry')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('users');
