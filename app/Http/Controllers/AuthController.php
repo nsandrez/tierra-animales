@@ -20,7 +20,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if ($this->authService->login($credentials['email'], $credentials['password'])) {
-            return redirect()->route('inicio'); 
+            return redirect()->route('inicio');
         }
 
         return back()->withErrors([
@@ -29,7 +29,11 @@ class AuthController extends Controller
     }
 
 
-    public function logout() {}
+    public function logout()
+    {
+        $this->authService->logout();
+        return redirect()->route('acesso');
+    }
 
     public function forgetPassword() {}
 

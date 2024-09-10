@@ -13,7 +13,7 @@
     <div class="flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
         <div class="w-full max-w-md space-y-8 p-4 bg-white shadow-md rounded-md">
             <div>
-                <a href="" class="flex justify-center">
+                <a href="/" class="flex justify-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-black" fill="none"
                         viewBox="0 0 24 24" stroke="black">
                         <circle cx="11" cy="4" r="2" />
@@ -35,14 +35,22 @@
                 </p>
             </div>
 
-            <form class="space-y-4" action="" method="POST">
+            <!-- Formulario de inicio de sesión -->
+            <form class="space-y-4" action="{{ route('login') }}" method="POST">
                 @csrf
+                <!-- Correo electrónico -->
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
-                    <input id="email" name="email" type="email" autocomplete="email" required
+                    <input id="email" name="email" type="email" autocomplete="email"
                         class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
                         placeholder="Ingresa tu correo electrónico" />
+
+                    @error('email')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
+
+                <!-- Contraseña -->
                 <div>
                     <div class="flex items-center justify-between">
                         <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
@@ -51,19 +59,16 @@
                         </a>
                     </div>
                     <div class="relative mt-1">
-                        <input id="password" name="password" type="password" autocomplete="current-password" required
+                        <input id="password" name="password" type="password" autocomplete="current-password"
                             class="block w-full py-2.5 pl-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
                             placeholder="Ingresa tu contraseña" />
-                        <span class="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
-                            onclick="togglePassword()">
-                            <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm8-1s-3-5-8-5-8 5-8 5 3 5 8 5 8-5 8-5z" />
-                            </svg>
-                        </span>
+
+                        @error('password')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
                     </div>
                 </div>
+
                 <div class="flex items-center">
                     <input id="remember_me" name="remember" type="checkbox"
                         class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
@@ -71,11 +76,13 @@
                         Recordarme
                     </label>
                 </div>
+
                 <button type="submit"
                     class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
                     Iniciar sesión
                 </button>
             </form>
+
             <div class="mt-4 text-center">
                 <a href="/" class="text-sm font-medium text-black hover:underline">
                     Volver al inicio

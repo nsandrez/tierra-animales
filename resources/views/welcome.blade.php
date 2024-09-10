@@ -14,10 +14,13 @@
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
                     <a href="#" class="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="currentColor"
-                            viewBox="0 0 24 24" stroke="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <circle cx="11" cy="4" r="2" />
+                            <circle cx="18" cy="8" r="2" />
+                            <circle cx="20" cy="16" r="2" />
                             <path
-                                d="M12 12C10.34 12 8.93 10.77 8.75 9.25C8.59 7.94 9.63 6.75 11 6.75C12.37 6.75 13.41 7.94 13.25 9.25C13.07 10.77 11.66 12 12 12zM15.5 12C14.1 12 12.97 10.77 13.12 9.25C13.28 7.94 14.37 6.75 15.75 6.75C17.13 6.75 18.22 7.94 18.08 9.25C17.93 10.77 16.8 12 15.5 12zM9.75 13.5C9.31 12.97 8.69 12.97 8.25 13.5C7.81 14.03 7.69 14.81 8.06 15.39C8.69 16.39 10.94 17.15 12 16.75C13.06 17.15 15.31 16.39 15.94 15.39C16.31 14.81 16.19 14.03 15.75 13.5C15.31 12.97 14.69 12.97 14.25 13.5C13.81 14.03 12.59 15.28 12 15.28C11.41 15.28 10.19 14.03 9.75 13.5zM6.5 12C5.1 12 3.97 10.77 4.12 9.25C4.28 7.94 5.37 6.75 6.75 6.75C8.13 6.75 9.22 7.94 9.08 9.25C8.93 10.77 7.8 12 6.5 12zM12 4C11.34 4 10.73 4.26 10.35 4.75C9.97 5.24 9.85 5.88 10.07 6.47C10.35 7.26 11.22 8 12 8C12.78 8 13.65 7.26 13.93 6.47C14.15 5.88 14.03 5.24 13.65 4.75C13.27 4.26 12.66 4 12 4z" />
+                                d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
                         </svg>
                         <span class="font-bold text-xl">Tierra Animales</span>
                     </a>
@@ -47,7 +50,7 @@
                 </nav>
 
                 <div class="flex items-center">
-                    <a href="/acesso" class="text-gray-600 hover:text-primary p-2 rounded-full">
+                    <a href="/acceso" class="text-gray-600 hover:text-primary p-2 rounded-full">
                         <span class="sr-only">Iniciar sesión</span>
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -131,7 +134,8 @@
                         </div>
                     </div>
                     <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                        <img src="{{ asset('images/consulta.jpg') }}" alt="Consulta" class="w-full h-48 object-cover">
+                        <img src="{{ asset('images/consulta.jpg') }}" alt="Consulta"
+                            class="w-full h-48 object-cover">
                         <div class="p-6">
                             <h3 class="text-xl font-semibold mb-2">Consulta</h3>
                             <p class="text-gray-600">Descripción del servicio de </p>
@@ -241,11 +245,14 @@
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-4 md:mb-0">
-                    <a href="#" class="flex items-center space-x-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="currentColor"
-                            viewBox="0 0 24 24" stroke="none">
+                    <a href="/" class="flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <circle cx="11" cy="4" r="2" />
+                            <circle cx="18" cy="8" r="2" />
+                            <circle cx="20" cy="16" r="2" />
                             <path
-                                d="M12 12C10.34 12 8.93 10.77 8.75 9.25C8.59 7.94 9.63 6.75 11 6.75C12.37 6.75 13.41 7.94 13.25 9.25C13.07 10.77 11.66 12 12 12zM15.5 12C14.1 12 12.97 10.77 13.12 9.25C13.28 7.94 14.37 6.75 15.75 6.75C17.13 6.75 18.22 7.94 18.08 9.25C17.93 10.77 16.8 12 15.5 12zM9.75 13.5C9.31 12.97 8.69 12.97 8.25 13.5C7.81 14.03 7.69 14.81 8.06 15.39C8.69 16.39 10.94 17.15 12 16.75C13.06 17.15 15.31 16.39 15.94 15.39C16.31 14.81 16.19 14.03 15.75 13.5C15.31 12.97 14.69 12.97 14.25 13.5C13.81 14.03 12.59 15.28 12 15.28C11.41 15.28 10.19 14.03 9.75 13.5zM6.5 12C5.1 12 3.97 10.77 4.12 9.25C4.28 7.94 5.37 6.75 6.75 6.75C8.13 6.75 9.22 7.94 9.08 9.25C8.93 10.77 7.8 12 6.5 12zM12 4C11.34 4 10.73 4.26 10.35 4.75C9.97 5.24 9.85 5.88 10.07 6.47C10.35 7.26 11.22 8 12 8C12.78 8 13.65 7.26 13.93 6.47C14.15 5.88 14.03 5.24 13.65 4.75C13.27 4.26 12.66 4 12 4z" />
+                                d="M9 10a5 5 0 0 1 5 5v3.5a3.5 3.5 0 0 1-6.84 1.045Q6.52 17.48 4.46 16.84A3.5 3.5 0 0 1 5.5 10Z" />
                         </svg>
                         <span class="font-bold">Tierra Animales</span>
                     </a>
