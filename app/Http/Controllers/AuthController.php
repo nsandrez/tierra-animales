@@ -8,6 +8,7 @@ use App\Http\Requests\LoginRequest;
 use App\Services\Auth\AuthServices;
 use App\Http\Requests\ResetPasswordRequest;
 use App\Http\Requests\ForgetPasswordRequest;
+use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
@@ -49,7 +50,7 @@ class AuthController extends Controller
         }
 
         session(['reset_email' => $email]);
-        return redirect()->route('loading');
+        return view('loading')->with('redirectRoute', route('password.process_forget_password'));
     }
 
     public function processForgetPassword()
@@ -65,7 +66,7 @@ class AuthController extends Controller
             return view('auth.reset-success');
         }
 
-        return redirect()->route('password.forget_password_form')->withErrors(['email' => $response['message']]);
+        return view('loading')->with('redirectRoute', route('password.process_forget_password'));
     }
 
     public function showResetForm($token)
@@ -88,5 +89,10 @@ class AuthController extends Controller
     }
 
 
-    public function register() {}
+    public function register(RegisterRequest $request)
+    {
+        $user = $this->authService->register($request->validated());
+
+        return view('loading')->with('redirectRoute', route('home.dashboard_admin'));
+    }
 }

@@ -52,16 +52,25 @@ Route::get('/error/401', function () {
 
 
 Route::middleware(['auth', 'check.status'])->group(function () {
+
+    Route::group(['prefix' => 'administrador', 'middleware' => ['check.role:Administrador']], function () {
+
+        Route::get('/inicio', function () {
+            return view('home-admin');
+        })->name('home.dashboard_admin');
+
+        Route::get('/nuevo-usuario', function () {
+            return view('usuario.add-user');
+        })->name('user.add_user');
+
+        Route::post('/nuevo-usuario/enviar', [AuthController::class, 'register'])->name('register');
+    });
+
+
     Route::group(['prefix' => 'veterinarios', 'middleware' => ['check.role:Veterinario']], function () {
         Route::get('/inicio', function () {
             return view('home-vet');
         })->name('home.dashboard_vet');
-    });
-
-    Route::group(['prefix' => 'admininistrador', 'middleware' => ['check.role:Administrador']], function () {
-        Route::get('/inicio', function () {
-            return view('home-admin');
-        })->name('home.dashboard_admin');
     });
 
     Route::group(['prefix' => 'test', 'middleware' => ['check.role:Test']], function () {

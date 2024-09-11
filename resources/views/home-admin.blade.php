@@ -73,7 +73,7 @@
             <p class="text-sm text-gray-500 mb-4">Gestiona tu clínica eficientemente</p>
             <div class="space-y-2">
                 <button
-                    class="w-full bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 font-bold py-2 px-4 rounded flex items-center justify-start">
+                    class="w-full border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 py-2 px-4 rounded flex items-center justify-start">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -83,7 +83,7 @@
                     Gestionar Personal
                 </button>
                 <button
-                    class="w-full bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 font-bold py-2 px-4 rounded flex items-center justify-start">
+                    class="w-full border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 py-2 px-4 rounded flex items-center justify-start">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -93,7 +93,7 @@
                     Ver Reportes
                 </button>
                 <button
-                    class="w-full bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 font-bold py-2 px-4 rounded flex items-center justify-start">
+                    class="w-full border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 py-2 px-4 rounded flex items-center justify-start">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -104,7 +104,7 @@
                     Gestionar Proveedores
                 </button>
                 <button
-                    class="w-full bg-white border border-gray-300 rounded-lg shadow-sm hover:bg-gray-50 font-bold py-2 px-4 rounded flex items-center justify-start">
+                    class="w-full border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 py-2 px-4 rounded flex items-center justify-start">
                     <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
