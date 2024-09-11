@@ -9,7 +9,7 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="text-foreground">
+<body class="text-foreground bg-[#EDF3F4]">
     <div class="flex min-h-screen w-full">
         <aside class="w-64 flex flex-col justify-between border-r bg-white p-4">
             <div>
