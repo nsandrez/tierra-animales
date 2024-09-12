@@ -2,6 +2,7 @@
 
 namespace App\Services\Auth;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Mail\ResetPasswordMail;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,10 @@ class AuthServices
 
         if ($user && Hash::check($password, $user->password)) {
             Auth::login($user);
+
+            $user->last_login = Carbon::now();
+            $user->save();
+
             return true;
         }
 

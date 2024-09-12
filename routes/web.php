@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,7 +51,6 @@ Route::get('/error/401', function () {
     return view('error.401');
 })->name('error.401');
 
-
 Route::middleware(['auth', 'check.status'])->group(function () {
 
     Route::group(['prefix' => 'administrador', 'middleware' => ['check.role:Administrador']], function () {
@@ -59,10 +59,7 @@ Route::middleware(['auth', 'check.status'])->group(function () {
             return view('home-admin');
         })->name('home.dashboard_admin');
 
-        Route::get('/nuevo-usuario', function () {
-            return view('usuario.add-user');
-        })->name('user.add_user');
-
+        Route::get('/listado-usuario', [UsuarioController::class, 'getAllUsers'])->name('user.list_user');
         Route::post('/nuevo-usuario/enviar', [AuthController::class, 'register'])->name('register');
     });
 

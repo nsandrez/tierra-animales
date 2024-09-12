@@ -23,12 +23,17 @@
             <form class="space-y-4" action="{{ route('password.email') }}" method="POST">
                 @csrf
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                    <label for="email"
+                        class="block text-sm font-medium text-gray-700 @error('email') text-red-600 @enderror">Correo
+                        electrónico</label>
                     <input id="email" name="email" type="email" autocomplete="email"
-                        class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
-                        placeholder="Ingresa tu correo electrónico">
+                        class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm  @error('email') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
+                        placeholder="Ingresa tu correo electrónico" value="{{ old('email') }}" />
+
                     @error('email')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            <span class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
                 <button type="submit"

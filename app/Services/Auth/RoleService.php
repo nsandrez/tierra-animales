@@ -8,11 +8,11 @@ class RoleService
     {
         switch ($rol) {
             case 'Veterinario':
-                return redirect()->route('home.dashboard_vet');
+                return view('loading')->with('redirectRoute', route('home.dashboard_vet'));
             case 'Administrador':
-                return redirect()->route('home.dashboard_admin');
+                return view('loading')->with('redirectRoute', route('home.dashboard_admin'));
             case 'Test':
-                return redirect()->route('home.dashboard_test');
+                return view('loading')->with('redirectRoute', route('home.dashboard_test'));
             default:
                 return redirect()->route('acceso');
         }

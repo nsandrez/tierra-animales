@@ -27,6 +27,7 @@ class AuthController extends Controller
 
         if ($this->authService->login($credentials['email'], $credentials['password'])) {
             $user = auth()->user();
+
             return $this->roleService->redirectBasedOnRole($user->rol);
         }
 

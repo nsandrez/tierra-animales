@@ -38,35 +38,43 @@
             <form class="space-y-4" action="{{ route('login') }}" method="POST">
                 @csrf
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico</label>
+                    <label for="email"
+                        class="block text-sm font-medium text-gray-700 @error('email') text-red-600 @enderror">Correo
+                        electrónico</label>
                     <input id="email" name="email" type="email" autocomplete="email"
-                        class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
-                        placeholder="Ingresa tu correo electrónico" />
+                        class="mt-1 block w-full py-2.5 pl-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm  @error('email') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
+                        placeholder="Ingresa tu correo electrónico" value="{{ old('email') }}" />
 
                     @error('email')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                        <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                            <span class="font-medium">{{ $message }}</span>
+                        </p>
                     @enderror
                 </div>
 
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                        <label for="password"
+                            class="block text-sm font-medium text-gray-700 @error('password') text-red-600 @enderror">Contraseña</label>
                         <a href="/restablecer-clave" class="text-sm font-medium text-black hover:underline">
                             ¿Olvidaste tu contraseña?
                         </a>
                     </div>
                     <div class="relative mt-1">
                         <input id="password" name="password" type="password" autocomplete="current-password"
-                            class="block w-full py-2.5 pl-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm"
+                            class="block w-full py-2.5 pl-4 pr-10 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-200 focus:border-gray-400 sm:text-sm @error('password') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
                             placeholder="Ingresa tu contraseña" />
 
                         @error('password')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">
+                                <span class="font-medium">{{ $message }}</span>
+                            </p>
                         @enderror
                     </div>
                 </div>
 
-                <div class="flex items-center">
+                <div class="flex
+                            items-center">
                     <input id="remember_me" name="remember" type="checkbox"
                         class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
                     <label for="remember_me" class="ml-2 block text-sm text-gray-900">
