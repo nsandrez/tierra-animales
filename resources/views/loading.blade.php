@@ -22,7 +22,7 @@
 
         setTimeout(function() {
             window.location.href = redirectRoute;
-        }, 5000);
+        }, 3000);
     </script>
 </body>
 
