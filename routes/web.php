@@ -59,8 +59,14 @@ Route::middleware(['auth', 'check.status'])->group(function () {
             return view('home-admin');
         })->name('home.dashboard_admin');
 
+        Route::get('/usuarios', [UsuarioController::class, 'index'])->name('user.index');
         Route::get('/listado-usuario', [UsuarioController::class, 'getAllUsers'])->name('user.list_user');
+        Route::get('/nuevo-usuario', [UsuarioController::class, 'create'])->name('user.create');
         Route::post('/nuevo-usuario/enviar', [AuthController::class, 'register'])->name('register');
+        Route::get('user/{id}/editar', [UsuarioController::class, 'getUser'])->name('user.edit');
+        Route::put('user/{id}', [UsuarioController::class, 'update'])->name('user.update');
+        Route::delete('/user/{id}', [UsuarioController::class, 'delete'])->name('user.delete');
+        Route::get('user/{id}/ver', [UsuarioController::class, 'viewUser'])->name('user.viewUser');
     });
 
 

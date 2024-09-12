@@ -131,3 +131,8 @@
         </div>
     </div>
 @endsection
+@section('css')
+@stop
+
+@section('js')
+@endsection

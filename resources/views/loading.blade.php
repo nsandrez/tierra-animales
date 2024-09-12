@@ -7,6 +7,8 @@
     <title>Procesando...</title>
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/spinner.css') }}">
+    @section('css')
+    @stop
 </head>
 
 <body>
@@ -17,13 +19,24 @@
         </div>
     </div>
 
+
     <script>
         const redirectRoute = "{{ $redirectRoute }}";
+        const success = "{{ isset($success) ? $success : '' }}";
 
         setTimeout(function() {
-            window.location.href = redirectRoute;
+            let finalUrl = `${redirectRoute}`;
+
+            if (success !== '') {
+                finalUrl += `?success=${success}`;
+            }
+
+            window.location.href = finalUrl;
         }, 3000);
     </script>
+
+    @section('js')
+    @endsection
 </body>
 
 </html>
