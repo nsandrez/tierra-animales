@@ -3,6 +3,7 @@
 namespace App\Services\Admin;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserServices
@@ -91,5 +92,10 @@ class UserServices
         }
 
         return false;
+    }
+
+    public function editProfile()
+    {
+        return Auth::user();
     }
 }
