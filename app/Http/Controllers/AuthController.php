@@ -89,11 +89,13 @@ class AuthController extends Controller
         return redirect()->route('acceso')->with('status', 'Tu contraseña ha sido actualizada exitosamente.');
     }
 
-
     public function register(RegisterRequest $request)
     {
         $user = $this->authService->register($request->validated());
 
-        return view('loading')->with('redirectRoute', route('home.dashboard_admin'));
+        return view('loading')->with([
+            'redirectRoute' => route('user.index'),
+            'success' => 'created',
+        ]);
     }
 }

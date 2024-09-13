@@ -53,14 +53,25 @@ Route::get('/error/401', function () {
 
 Route::middleware(['auth', 'check.status'])->group(function () {
 
+    Route::get('/perfil', [UsuarioController::class, 'show'])->name('user.show');
+    Route::get('/perfil/editar', [UsuarioController::class, 'editProfile'])->name('profile.edit');
+    Route::put('/perfil/editar/enviar', [UsuarioController::class, 'updateProfile'])->name('user.updateProfile');
+
+
     Route::group(['prefix' => 'administrador', 'middleware' => ['check.role:Administrador']], function () {
 
         Route::get('/inicio', function () {
             return view('home-admin');
         })->name('home.dashboard_admin');
 
+        Route::get('/usuarios', [UsuarioController::class, 'index'])->name('user.index');
         Route::get('/listado-usuario', [UsuarioController::class, 'getAllUsers'])->name('user.list_user');
+        Route::get('/nuevo-usuario', [UsuarioController::class, 'create'])->name('user.create');
         Route::post('/nuevo-usuario/enviar', [AuthController::class, 'register'])->name('register');
+        Route::get('user/{id}/editar', [UsuarioController::class, 'getUser'])->name('user.edit');
+        Route::put('user/{id}', [UsuarioController::class, 'update'])->name('user.update');
+        Route::delete('/user/{id}', [UsuarioController::class, 'delete'])->name('user.delete');
+        Route::get('user/{id}/ver', [UsuarioController::class, 'viewUser'])->name('user.viewUser');
     });
 
 
