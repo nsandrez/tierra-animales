@@ -58,7 +58,7 @@
                         Mi Cuenta
                     </a>
                     <p class="text-gray-500 px-4 py-2">Gestión</p>
-                    <a href="#"
+                    <a href="{{ route('cliente.index') }}"
                         class="flex items-center gap-2 rounded-md px-4 py-2 text-lg font-medium transition-colors hover:bg-gray-100 hover:text-gray-900">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="size-6">
