@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\UsuarioController;
 
 /*
@@ -64,6 +65,32 @@ Route::middleware(['auth', 'check.status'])->group(function () {
             return view('home-admin');
         })->name('home.dashboard_admin');
 
+
+        // RUTAS DE CLIENTE
+        Route::get('/clientes', [ClienteController::class, 'index'])->name('cliente.index');
+        Route::get('/listado-cliente', [ClienteController::class, 'getAllClient'])->name('cliente.list_client');
+        Route::get('/nuevo-cliente', [ClienteController::class, 'create'])->name('cliente.create');
+        Route::post('/nuevo-cliente/enviar', [ClienteController::class, 'store'])->name('cliente.store');
+        Route::get('cliente/{id}/editar', [ClienteController::class, 'getClient'])->name('cliente.edit');
+        Route::put('cliente/{id}', [ClienteController::class, 'update'])->name('cliente.update');
+        Route::delete('/cliente/{id}', [ClienteController::class, 'delete'])->name('cliente.delete');
+        Route::get('cliente/{id}/ver', [ClienteController::class, 'viewClient'])->name('cliente.viewClient');
+
+        // RUTAS DE MASCOTAS
+
+        // RUTAS DE CITAS
+
+        // RUTAS DE HISTORIAL MEDICO
+
+        // RUTAS DE PRODUCTOS
+
+        // RUTAS DE INVENTARIO
+
+        // RUTAS DE FACTURAS
+
+        // RUTAS DE PAGOS
+
+        // RUTAS DE USUARIO
         Route::get('/usuarios', [UsuarioController::class, 'index'])->name('user.index');
         Route::get('/listado-usuario', [UsuarioController::class, 'getAllUsers'])->name('user.list_user');
         Route::get('/nuevo-usuario', [UsuarioController::class, 'create'])->name('user.create');
@@ -72,6 +99,14 @@ Route::middleware(['auth', 'check.status'])->group(function () {
         Route::put('user/{id}', [UsuarioController::class, 'update'])->name('user.update');
         Route::delete('/user/{id}', [UsuarioController::class, 'delete'])->name('user.delete');
         Route::get('user/{id}/ver', [UsuarioController::class, 'viewUser'])->name('user.viewUser');
+
+
+        // RUTAS DE AUDITORIAS
+
+        // RUTAS DE PROVEEDORES
+
+        // RUTAS DE PRODUCTOS PROVEEDORES
+
     });
 
 

@@ -1,58 +1,42 @@
 @extends('layout.app')
 
-@section('title', 'Dashboard - Registro de Usuario')
+@section('title', 'Dashboard - Registro de Cliente')
 
 @section('contenido-admin')
-    <h2 class="text-3xl font-semibold">Registro de Usuario</h2>
-    <p class="text-lg text-muted-foreground">Por favor, complete la información para registrar un nuevo usuario.</p>
+    <h2 class="text-3xl font-semibold">Registro de Cliente</h2>
+    <p class="text-lg text-muted-foreground">Por favor, complete la información para registrar un nuevo cliente.</p>
     <br>
     <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
         <div class="lg:col-span-2">
-            <form action="{{ route('register') }}" method="POST">
+            <form action="{{ route('cliente.store') }}" method="POST">
                 @csrf
                 <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                     <div class="md:col-span-5">
-                        <label for="name" class="@error('name') text-red-600 @enderror">
+                        <label for="name" class="@error('nombre') text-red-600 @enderror">
                             Nombre Completo
                         </label>
-                        <input type="name" name="name" id="name"
+                        <input type="name" name="nombre" id="nombre"
                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-50
-                                @error('name') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
-                            placeholder="Nombre Completo" value="{{ old('name') }}" />
+                                @error('nombre') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
+                            placeholder="Nombre Completo" value="{{ old('nombre') }}" />
 
-                        @error('name')
+                        @error('nombre')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                                 <span class="font-medium">{{ $message }}</span>
                             </p>
                         @enderror
                     </div>
 
-                    <div class="md:col-span-3">
-                        <label for="email" class="@error('email') text-red-600 @enderror">
+                    <div class="md:col-span-5">
+                        <label for="email" class="@error('correo_electronico') text-red-600 @enderror">
                             Correo electrónico
                         </label>
-                        <input type="email" name="email" id="email"
+                        <input type="email" name="correo_electronico" id="correo_electronico"
                             class="h-10 border mt-1 rounded px-4 w-full bg-gray-50
-                                @error('email') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
-                            placeholder="Correo electrónico" value="{{ old('email') }}" />
+                                @error('correo_electronico') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
+                            placeholder="Correo electrónico" value="{{ old('correo_electronico') }}" />
 
-                        @error('email')
-                            <p class="mt-2 text-sm text-red-600 dark:text-red-500">
-                                <span class="font-medium">{{ $message }}</span>
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div class="md:col-span-2">
-                        <label for="password" class="@error('password') text-red-600 @enderror">
-                            Contraseña
-                        </label>
-                        <input type="password" name="password" id="password"
-                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50
-                                @error('password') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
-                            placeholder="Contraseña" value="{{ old('password') }}" />
-
-                        @error('password')
+                        @error('correo_electronico')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                                 <span class="font-medium">{{ $message }}</span>
                             </p>
@@ -60,19 +44,16 @@
                     </div>
 
                     <div class="md:col-span-3">
-                        <label for="rol" class="@error('rol') text-red-600 @enderror">
-                            Rol
+                        <label for="direccion" class="@error('direccion') text-red-600 @enderror">
+                            Dirección
                         </label>
-                        <select name="rol" id="rol"
-                            class="h-10 border mt-1 rounded px-4 w-full bg-gray-50 @error('rol') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror">
-                            <option value="" {{ old('rol') == '' ? 'selected' : '' }}>Seleccionar Rol</option>
-                            <option value="Administrador" {{ old('rol') == 'Administrador' ? 'selected' : '' }}>
-                                Administrador</option>
-                            <option value="Veterinario" {{ old('rol') == 'Veterinario' ? 'selected' : '' }}>Veterinario
-                            </option>
-                        </select>
-
-                        @error('rol')
+                        <div class="flex mt-1">
+                            <input type="text" name="direccion" id="direccion"
+                                class="h-10 border rounded-r-md px-4 w-full bg-gray-50
+                                @error('direccion') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
+                                placeholder="Dirección" value="{{ old('direccion') }}" />
+                        </div>
+                        @error('direccion')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                                 <span class="font-medium">{{ $message }}</span>
                             </p>
@@ -80,7 +61,7 @@
                     </div>
 
                     <div class="md:col-span-2">
-                        <label for="phone" class="@error('phone') text-red-600 @enderror">
+                        <label for="phone" class="@error('telefono') text-red-600 @enderror">
                             Teléfono
                         </label>
                         <div class="flex mt-1">
@@ -88,12 +69,12 @@
                                 class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md h-10 whitespace-nowrap">
                                 +56 9
                             </span>
-                            <input type="text" name="phone" id="phone"
+                            <input type="telefono" name="telefono" id="telefono"
                                 class="h-10 border rounded-r-md px-4 w-full bg-gray-50
-                                @error('phone') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
-                                placeholder="Teléfono" value="{{ old('phone') }}" />
+                                @error('telefono') border-red-500 bg-red-50 text-red-900 placeholder-red-700 @enderror"
+                                placeholder="Teléfono" value="{{ old('telefono') }}" />
                         </div>
-                        @error('phone')
+                        @error('telefono')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500">
                                 <span class="font-medium">{{ $message }}</span>
                             </p>
@@ -115,7 +96,7 @@
                         </div>
 
                         <div class="inline-flex items-center">
-                            <a href="{{ route('user.index') }}"
+                            <a href="{{ route('cliente.index') }}"
                                 class="border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 py-2 px-4 flex items-center">
                                 <svg class="w-6 h-6 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
