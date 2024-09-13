@@ -17,7 +17,7 @@
     </div>
     <div class="lg:col-span-3 bg-white rounded-lg shadow-md p-6">
         <div class="flex items-center justify-between mb-4">
-            <h3 class="text-2xl font-semibold">Últimas acciones en el sistema</h3>
+            <h3 class="text-2xl font-semibold">Ultimos registros en el sistema</h3>
         </div>
         <ul class="space-y-2">
             <li class="flex items-center">
